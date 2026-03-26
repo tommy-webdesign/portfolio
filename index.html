@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tommy Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Poppins', sans-serif;
+                color: #333;
+                padding-top: 70px;
+                line-height: 1.6;
+            }
+
+            a{
+                transition: 0.3s;
+            }
+
+            .container {
+                width: 90%;
+                max-width: 1100px;
+                margin: 0 auto;
+            }
+
+            /* ヘッダー */
+            .header {
+                position: fixed;
+                width: 100%;
+                top: 0;
+                left: 0;
+                background: white;
+                border-bottom: 1px solid #eee;
+            }
+
+            .header .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px 0;
+            }
+
+            .logo {
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+            .nav ul {
+                display: flex;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .nav li {
+                margin-left: 20px;
+            }
+
+            .nav a {
+                text-decoration: none;
+                color: #333;
+                transition: 0.3s;
+            }
+
+            .nav a:hover {
+                color: #0077ff;
+            }
+
+            /* ファーストビュー */
+            .fv {
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                text-align: center;
+            }
+
+            .fv h2 {
+                font-size: 40px;
+                margin-bottom: 10px;
+            }
+
+            .fv p {
+                color: #666;
+            }
+
+            /* 作品 */
+            .works {
+                padding: 80px 0;
+            }
+
+            .works h2 {
+                text-align: center;
+                margin-bottom: 40px;
+                position: relative;
+            }
+
+            .works h2::after{
+                content: "";
+                display: block;
+                width: 50px;
+                height: 3px;
+                background: #0077ff;
+                margin: 10px auto 0;
+            }
+
+            .works-list {
+                display: flex;
+                gap: 30px;
+            }
+
+            .work-item {
+                flex: 1;
+                background: #fff;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+                transition: 0.3s;
+            }
+
+            .work-item img {
+                width: 100%;
+                display: block;
+                transition: 0.3s;
+            }
+
+            .work-item h3 {
+                padding: 15px;
+                margin: 0;
+            }
+
+            .work-item p {
+                padding: 0 15px 20px;
+                margin: 0;
+                color: #666;
+            }
+
+            /* ホバーで浮く */
+            .work-item:hover {
+                transform: translateY(-10px) scale(1.02);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            }
+
+            .work-item:hover img{
+                transform:scale(1.05);
+            }
+
+            /* フッター */
+            .footer {
+                text-align: center;
+                padding: 30px 0;
+                background: #f8f8f8;
+                color: #777;
+            }
+
+            /* アニメーション */
+            .fade{
+                opacity: 0;
+                transform:translateY(30px);
+                transition: 0.8s;
+            }
+
+            .fade.show{
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .work-item:nth-child(1){
+                transition-delay: 0.2s;
+            }
+
+            .work-item:nth-child(2){
+                transition-delay: 0.4s;
+            }
+
+            /* スマホ対応 */
+            @media(max-width: 768px){
+                .contaner{
+                    width: 90%;
+                }
+
+                .nav{
+                    display: none;
+                }
+
+                .fv h2{
+                    font-size: 28px;
+                }
+
+                .works-list{
+                    flex-direction: column;
+                }
+
+                .work-item{
+                    margin-bottom: 20px;
+                }
+            }
+            
+        </style>
+    </head>
+
+    <body>
+
+        <!-- ヘッダー -->
+        <header class="header">
+            <div class="container">
+                <h1 class="logo">Tommy</h1>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#works">Works</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- ファーストビュー -->
+        <section class="fv">
+            <div class="container fade">
+                <h2>Web制作ポートフォリオ</h2>
+                <p>シンプルで見やすいサイト制作をしています</p>
+            </div>
+        </section>
+
+        <!-- 作品 -->
+        <section id="works" class="works fade">
+            <div class="container">
+                <h2>Works</h2>
+
+                <div class="works-list">
+
+                    <div class="work-item fade">
+                        <img src="img/work1.png" alt="カフェサイト">
+                        <h3>カフェサイト</h3>
+                        <p>レスポンシブ対応 / ホバーアニメーション実装</p>
+                    </div>
+
+                    <div class="work-item fade">
+                        <img src="img/work2.png" alt="美容院サイト">
+                        <h3>美容院サイト</h3>
+                        <p>デザインとレイアウトを意識して制作</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- フッター -->
+        <footer class="footer">
+            <p>© Tommy Portfolio</p>
+        </footer>
+
+        <script>
+            const fades = document.querySelectorAll('.fade');
+
+            window.addEventListener('scroll', () => {
+                fades.forEach(fade => {
+                    const rect = fade.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+
+                    if(rect.top < windowHeight - 100){
+                        fade.classList.add('show');
+                    }
+                });
+            });
+        </script>
+
+    </body>
+</html>
