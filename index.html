@@ -6,6 +6,10 @@
         <title>Tommy Portfolio</title>
         <link rel="stylesheet" href="style.css">
         <style>
+            html{
+                scroll-behavior: smooth;
+            }
+
             body {
                 margin: 0;
                 font-family: 'Poppins', sans-serif;
@@ -150,6 +154,30 @@
                 transform:scale(1.05);
             }
 
+            .about {
+                padding: 80px 0;
+            }
+
+            .about h2 {
+                text-align: center;
+                margin-bottom: 40px;
+                position: relative;
+            }
+
+            .about h2::after{
+                content: "";
+                display: block;
+                width: 50px;
+                height: 3px;
+                background: #0077ff;
+                margin: 10px auto 0;
+            }
+
+            .about{
+                text-align: center;
+                color: #666;
+            }
+
             /* フッター */
             .footer {
                 text-align: center;
@@ -240,7 +268,7 @@
                 <div class="works-list">
 
                     <div class="work-item fade">
-                        <a href="https://tomimasu-web.github.io/cafe-site/">
+                        <a href="https://tommy-webdesign.github.io/cafe-site/">
                             <img src="img/work1.png" alt="カフェサイト">
                         </a>
                         <h3>カフェサイト</h3>
@@ -248,7 +276,7 @@
                     </div>
 
                     <div class="work-item fade">
-                        <a href="https://tomimasu-web.github.io/beauty-salon/">
+                        <a href="https://tommy-webdesign.github.io/beauty-salon/">
                             <img src="img/work2.png" alt="美容院サイト">
                         </a>
                         <h3>美容院サイト</h3>
@@ -256,7 +284,7 @@
                     </div>
 
                     <div class="work-item fade">
-                        <a href="https://tomimasu-web.github.io/company/">
+                        <a href="https://tommy-webdesign.github.io/company/">
                             <img src="img/work3.png" alt="企業サイト">
                         </a>
                         <h3>企業サイト</h3>
@@ -267,7 +295,7 @@
             </div>
         </section>
 
-        <section id="about">
+        <section id="about" class="about fade">
             <div class="container">
                 <h2>About</h2>
                 <p>
@@ -300,7 +328,5 @@
             window.addEventListener('DOMContentLoaded', checkFade);
         </script>
 
-    </body>
-</html>
     </body>
 </html>
