@@ -120,19 +120,24 @@
 
             .work-item img {
                 width: 100%;
+                height: 200px;
                 display: block;
                 transition: 0.3s;
+                object-fit: cover;
+                filter: brightness(0.9);
             }
 
             .work-item h3 {
                 padding: 15px;
                 margin: 0;
+                flex-grow: 1;
             }
 
             .work-item p {
                 padding: 0 15px 20px;
                 margin: 0;
                 color: #666;
+                flex-grow: 1;
             }
 
             /* ホバーで浮く */
@@ -173,9 +178,13 @@
                 transition-delay: 0.4s;
             }
 
+            .work-item:nth-child(3){
+                transition-delay: 0.6s;
+            }
+
             /* スマホ対応 */
             @media(max-width: 768px){
-                .contaner{
+                .container{
                     width: 90%;
                 }
 
@@ -231,18 +240,40 @@
                 <div class="works-list">
 
                     <div class="work-item fade">
-                        <img src="work1.png" alt="カフェサイト">
+                        <a href="https://tomimasu-web.github.io/cafe-site/">
+                            <img src="img/work1.png" alt="カフェサイト">
+                        </a>
                         <h3>カフェサイト</h3>
                         <p>レスポンシブ対応 / ホバーアニメーション実装</p>
                     </div>
 
                     <div class="work-item fade">
-                        <img src="work2.png" alt="美容院サイト">
+                        <a href="https://tomimasu-web.github.io/beauty-salon/">
+                            <img src="img/work2.png" alt="美容院サイト">
+                        </a>
                         <h3>美容院サイト</h3>
                         <p>デザインとレイアウトを意識して制作</p>
                     </div>
 
+                    <div class="work-item fade">
+                        <a href="https://tomimasu-web.github.io/company/">
+                            <img src="img/work3.png" alt="企業サイト">
+                        </a>
+                        <h3>企業サイト</h3>
+                        <p>中小企業向けに売上アップを意識したコーポレートサイトを制作。スライダーや問い合わせフォームを実装。</p>
+                    </div>
+
                 </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>About</h2>
+                <p>
+                福岡を拠点にWeb制作を行っています。<br>
+                中小企業や個人事業主様向けに、シンプルで見やすく成果につながるサイトを制作しています。
+                </p>
             </div>
         </section>
 
@@ -254,7 +285,7 @@
         <script>
             const fades = document.querySelectorAll('.fade');
 
-            window.addEventListener('scroll', () => {
+            function checkFade(){
                 fades.forEach(fade => {
                     const rect = fade.getBoundingClientRect();
                     const windowHeight = window.innerHeight;
@@ -263,8 +294,13 @@
                         fade.classList.add('show');
                     }
                 });
-            });
+            }
+
+            window.addEventListener('scroll', checkFade);
+            window.addEventListener('DOMContentLoaded', checkFade);
         </script>
 
+    </body>
+</html>
     </body>
 </html>
