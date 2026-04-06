@@ -3,330 +3,972 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tommy Portfolio</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="img/favicon.png">
+
+
+        <!-- SEO的にも大事 -->
+        <title>Tommy Web制作 | ホームページ作成</title>
+
         <style>
             html{
                 scroll-behavior: smooth;
             }
 
-            body {
-                margin: 0;
-                font-family: 'Poppins', sans-serif;
-                color: #333;
-                padding-top: 70px;
-                line-height: 1.6;
+            body{
+                margin:0;
+                font-family: sans-serif;
+                line-height:1.6;
             }
 
-            a{
-                transition: 0.3s;
+            h2{
+                position: relative;
+                text-align:center;
+                margin-bottom:30px;
             }
 
-            .container {
-                width: 90%;
-                max-width: 1100px;
-                margin: 0 auto;
+            h2::after{
+                content:"";
+                display: block;
+                width: 50px;
+                height: 4px;
+                background:#4facfe;
+                margin:15px auto 0;
+                border-radius: 2px;
             }
 
-            /* ヘッダー */
-            .header {
-                position: fixed;
-                width: 100%;
-                top: 0;
-                left: 0;
-                background: white;
-                border-bottom: 1px solid #eee;
+
+
+            .container{
+                width:90%;
+                margin:0 auto;
             }
 
-            .header .container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 15px 0;
+            header{
+                background:#fff;
+                border-bottom:1px solid #ddd;
+                position:sticky;
+                top:0;
+                z-index: 10;
             }
 
-            .logo {
-                font-size: 24px;
+            .header-inner{
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                padding:10px 0;
+            }
+
+            nav{
+                display:block;
+            }
+
+            nav ul{
+                display:flex;
+                justify-content: flex-end;
+                list-style:none;
+                gap:20px;
+                margin:0;
+                padding:0;
+            }
+
+            .hamburger{
+                width: 30px;
+                cursor:pointer;
+                display: none;
+            }
+
+            .hamburger span{
+                display: block;
+                height: 3px;
+                background: #333;
+                margin:6px 0;
+            }
+
+            nav a{
+                text-decoration:none;
+                color:#333;
+                background:#fff;
+            }
+
+            nav a:hover{
+                color:#4facfe;
+            }
+
+            /* メインビジュアル */
+            .hero{
+                position: relative;
+                height: 400px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                text-align:center;
+
+                background: linear-gradient(120deg, #4facfe, #00eeff, #4facfe);
+                background-size: 300% 300%;
+                animation: gradientMove 5s linear infinite;
+                
+                overflow: hidden;
+            }
+
+            .hero::after{
+                content:"";
+                position:absolute;
+                bottom:0;
+                left:0;
+                width:100%;
+                height:200px;
+
+                background: linear-gradient(
+                    to bottom,
+                    rgba(255,255,255,0) 0%,
+                    rgba(255,255,255,0.5) 50%,
+                    #fff 100%
+                );
+            }
+            
+
+            @keyframes gradientMove{
+                0%{background-position:0% 50%;}
+                50%{background-position:100% 50%;}
+                100%{background-position:0% 50%;}
+            }
+
+            .hero-text{
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform: translate(-50%, -50%);
+                z-index:2;
+                text-align:center;
+                color:#fff;
+            }
+            
+            .hero-text h1{
+                text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+                width: 800px;
+            }
+
+            .hero-text p{
                 font-weight: bold;
             }
 
-            .nav ul {
-                display: flex;
-                list-style: none;
-                margin: 0;
-                padding: 0;
+            /* 背景の丸 */
+            .hero-bg span {
+                position: absolute;
+                border-radius: 50%;
+                filter: blur(0px);
+                opacity: 0.3;
+                animation: float 10s infinite ease-in-out;
             }
 
-            .nav li {
-                margin-left: 20px;
+            /* それぞれ位置とサイズ変える */
+            .hero-bg span:nth-child(1){
+                width:300px;
+                height:300px;
+                background:#98fff0;
+                top:10%;
+                left:20%;
             }
 
-            .nav a {
-                text-decoration: none;
-                color: #333;
-                transition: 0.3s;
+            .hero-bg span:nth-child(2){
+                width:200px;
+                height:200px;
+                background:#00c3ff;
+                top:50%;
+                left:70%;
+                animation-delay:2s;
             }
 
-            .nav a:hover {
-                color: #0077ff;
+            .hero-bg span:nth-child(3){
+                width:250px;
+                height:250px;
+                background:#007BFF;
+                top:70%;
+                left:30%;
+                animation-delay:4s;
+            }
+            
+            /* ふわふわ動き */
+            @keyframes float {
+                0% {
+                    transform: translateY(0px);
+                }
+                50% {
+                    transform: translateY(-30px);
+                }
+                100% {
+                    transform: translateY(0px);
+                }
             }
 
-            /* ファーストビュー */
-            .fv {
-                height: 100vh;
-                display: flex;
-                align-items: center;
-                text-align: center;
+            .btn{
+                display:inline-block;
+                padding:14px 28px;
+                background:#007BFF;
+                color:#fff;
+                text-decoration:none;
+                margin-top:20px;
+                border-radius:30px;
+                font-weight:bold;
+                transition:0.3s;
             }
 
-            .fv h2 {
-                font-size: 40px;
-                margin-bottom: 10px;
+            .btn:hover{
+                transform:translateY(-3px);
+                box-shadow:0 8px 20px rgba(0,0,0,0.2);
+                background:#f5f5f5;
+                color:#007BFF;
             }
 
-            .fv p {
-                color: #666;
+            section{
+                padding:60px 0;
             }
 
-            /* 作品 */
-            .works {
-                padding: 80px 0;
+            .news-list{
+                list-style:none;
+                padding:0;
             }
 
-            .works h2 {
-                text-align: center;
-                margin-bottom: 40px;
-                position: relative;
+            .news-list li{
+                list-style:none;
             }
 
-            .works h2::after{
-                content: "";
-                display: block;
-                width: 50px;
-                height: 3px;
-                background: #0077ff;
-                margin: 10px auto 0;
+            .news-list a{
+                display:flex;
+                text-decoration:none;
             }
 
-            .works-list {
-                display: flex;
-                gap: 30px;
+            .news-list p{
+                color:black;
+                font-size: 15px;
             }
 
-            .work-item {
+            .news-list span{
+                font-weight:bold;
+                color:black;
+                min-width:100px;
+                text-decoration:underline;
+            }
+
+            .news-list li:hover{
+                background:#f5f5f5;
+            }
+
+            .news-btn{
+                margin-top:20px;
+                text-align:right;
+            }
+
+            .news-btn a{
+                padding:8px 16px;
+                border:1px solid #4facfe;
+                border-radius:20px;
+            }
+
+            .news-btn a:hover{
+                background:#4facfe;
+                color:#fff;
+            }
+
+            .news-list{
+                list-style:none;
+                padding:0;
+                display:flex;
+                flex-direction:column;
+                gap:20px;
+            }
+
+            /* カード */
+            .news-card{
+                display:flex;
+                gap:20px;
+                text-decoration:none;
+                color:#333;
+                background:#fff;
+                padding:15px;
+                border-radius:10px;
+                box-shadow:0 5px 15px rgba(0,0,0,0.1);
+                transition:0.3s;
+            }
+
+            /* ホバー */
+            .news-card:hover{
+                transform:translateY(-5px);
+                box-shadow:0 10px 25px rgba(0,0,0,0.15);
+            }
+
+            /* 画像 */
+            .news-card img{
+                width:120px;
+                height:80px;
+                object-fit:cover;
+                border-radius:8px;
+            }
+
+            /* テキスト */
+            .news-text span{
+                font-size:12px;
+                color:#888;
+            }
+
+            .news-text p{
+                margin:5px 0 0;
+                font-weight:bold;
+                white-space: pre-line;
+            }
+
+            .service-list{
+                display:flex;
+                gap:20px;
+            }
+
+            .service{
+                border-radius:10px;
+                border-top:3px solid #4facfe;
+                transition:0.3s;
+                box-shadow:0 5px 15px rgba(0,0,0,0.1);
+                border-radius: 10px;
+                padding:20px;
+            }
+
+            .service:hover{
+                transform:translateY(-5px);
+            }
+
+            .feature-box{
+                display:flex;
+                gap:20px;
+                flex-wrap:wrap;
+            }
+
+            .feature-item{
+                flex:1 1 45%;
+                background:#f9f9f9;
+                padding:20px;
+                border-radius:10px;
+                box-shadow:0 5px 15px rgba(0,0,0,0.1);
+                border-left:3px solid #4facfe;
+            }
+
+            .feature-item h3{
+                margin-bottom:10px;
+            }
+
+            .works-slider{
+                overflow:hidden;
+                width:100%;
+                padding:20px 0;
+            }
+
+            .works-track{
+                display:flex;
+                gap:20px;
+                width:max-content;
+                animation: scroll 40s linear infinite;
+            }
+
+
+            .work{
+                flex:0 0 500px;
+                min-width: 300px;
+                background:#f9f9f9;
+                padding:20px;
+                box-shadow:0 5px 15px rgba(0,0,0,0.1);
+                border-radius: 10px;
+            }
+
+            @keyframes scroll{
+                0%{
+                    transform: translateX(0);
+                }
+                100%{
+                    transform: translateX(-50%);
+                }
+            }
+            
+
+            .work-item{
                 flex: 1;
                 background: #fff;
                 border-radius: 10px;
                 overflow: hidden;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
                 transition: 0.3s;
+                cursor: pointer;
             }
 
-            .work-item img {
+            .work-item img{
                 width: 100%;
-                height: 200px;
                 display: block;
                 transition: 0.3s;
-                object-fit: cover;
-                filter: brightness(0.9);
-            }
-
-            .work-item h3 {
-                padding: 15px;
-                margin: 0;
-                flex-grow: 1;
-            }
-
-            .work-item p {
-                padding: 0 15px 20px;
-                margin: 0;
-                color: #666;
-                flex-grow: 1;
-            }
-
-            /* ホバーで浮く */
-            .work-item:hover {
-                transform: translateY(-10px) scale(1.02);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                border-radius: 10px;
             }
 
             .work-item:hover img{
                 transform:scale(1.05);
             }
 
-            .about {
-                padding: 80px 0;
+            .price-box{
+                display:flex;
+                gap:20px;
+                flex-wrap:wrap;
             }
 
-            .about h2 {
+            .price-item{
+                flex:1;
+                background:#f9f9f9;
+                padding:20px;
+                border-radius:10px;
+                box-shadow:0 5px 15px rgba(0,0,0,0.1);
+                border:1px solid #ddd;
+            }
+
+            .price{
+                font-size:24px;
+                font-weight:bold;
+                margin:10px 0;
+                color: #4facfe;
+            }
+
+            .price-note{
+                margin-top:20px;
+                font-size:14px;
+                color:#666;
+                text-align:end;
+            }
+
+            #about .container,
+            #contact .container{
+                max-width: 800px;
                 text-align: center;
-                margin-bottom: 40px;
-                position: relative;
             }
 
-            .about h2::after{
-                content: "";
-                display: block;
-                width: 50px;
-                height: 3px;
-                background: #0077ff;
-                margin: 10px auto 0;
+            #about p{
+                line-height: 2;
             }
 
-            .about{
-                text-align: center;
-                color: #666;
+            #contact p{
+                margin-bottom: 30px;
             }
 
-            /* フッター */
-            .footer {
-                text-align: center;
-                padding: 30px 0;
-                background: #f8f8f8;
-                color: #777;
+            form{
+                display:flex;
+                flex-direction:column;
+                gap:10px;
+                max-width:400px;
+                margin:40px auto 0;
             }
 
-            /* アニメーション */
-            .fade{
-                opacity: 0;
-                transform:translateY(30px);
-                transition: 0.8s;
+            input,textarea{
+                padding:10px;
+                border:1px solid #ddd;
             }
 
-            .fade.show{
-                opacity: 1;
-                transform: translateY(0);
+            footer{
+                background:#333;
+                color:#fff;
+                text-align:center;
+                padding:20px 0;
             }
 
-            .work-item:nth-child(1){
-                transition-delay: 0.2s;
+            .footer-inner{
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                gap:15px;
             }
 
-            .work-item:nth-child(2){
-                transition-delay: 0.4s;
+            .sns img{
+                width:24px;
+                height:24px;
+                transition:0.3s;
             }
 
-            .work-item:nth-child(3){
-                transition-delay: 0.6s;
+            .sns img:hover{
+                transform:scale(1.2);
             }
 
-            /* スマホ対応 */
-            @media(max-width: 768px){
+            @media(max-width:768px){
+
+                /* 全体 */
+                body{
+                    font-size:14px;
+                }
+
                 .container{
-                    width: 90%;
+                    width:90%;
                 }
 
-                .nav{
-                    display: none;
+                /* ヘッダー */
+                .header-inner{
+                    flex-direction:row;
+                    align-items:flex-start;
                 }
 
-                .fv h2{
-                    font-size: 28px;
+                .hamburger{
+                    display:block;
+                    margin-left:auto;
+                }
+                nav{
+                    display:none;
+                    width:100px;
+                    position:fixed;
+                    top:50px;
+                    right:0;
+                    background:#fff;
+                    z-index:100;
+                    padding: 10px;
+                }
+
+                nav a{
+                    display: block;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                }
+
+                nav.active{
+                    display: block;
+                }
+
+                nav ul{
+                    flex-direction:column;
+                    background:#fff;
+                    padding: 10px 0;
+                }
+
+                /* hero */
+                .hero{
+                    height:300px;
+                }
+
+                .hero-text h1{
+                    font-size:15px;
+                }
+
+                .hero-text p{
+                    font-size:12px;
+                }
+
+                /* NEWS */
+                .news-list li{
+                    flex-direction:column;
+                    gap:5px;
+                }
+
+                .news-list span{
+                    min-width:auto;
+                }
+
+                .news-card{
+                    flex-direction:column;
+                }
+
+                .news-card img{
+                    width:100%;
+                    height:200px;
+                }
+
+                /* SERVICE */
+                .service-list{
+                    flex-direction:column;
+                }
+
+                .work{
+                    width:85%;
+                    padding: 15px;
+                    max-width:300px;
+                }
+
+                .works-img{
+                    width: 100%;
+                    display: block;
+                    height:auto;
                 }
 
                 .works-list{
-                    flex-direction: column;
+                    flex-direction:column;
                 }
 
-                .work-item{
-                    margin-bottom: 20px;
+                #about p{
+                    text-align: left;
                 }
+
+                .price{
+                    font-size: 20px;
+                }
+
+                .price-box{
+                    flex-direction:column;
+                }
+
+                .price-item{
+                    margin-bottom:15px;
+                }
+
             }
-            
+
         </style>
     </head>
-
     <body>
 
         <!-- ヘッダー -->
-        <header class="header">
-            <div class="container">
-                <h1 class="logo">Tommy</h1>
-                <nav class="nav">
+        <header>
+            <div class="container header-inner">
+                <h1>Tommy Web制作</h1>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav id="nav">
                     <ul>
-                        <li><a href="#works">Works</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">HOME</a></li>
+                        <li><a href="#news">NEWS</a></li>
+                        <li><a href="#service">SERVICE</a></li>
+                        <li><a href="#feature">FEATURE</a></li>
+                        <li><a href="#works">WORKS</a></li>
+                        <li><a href="#about">ABOUT</a></li>
+                        <li><a href="#price">PRICE</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
 
-        <!-- ファーストビュー -->
-        <section class="fv">
-            <div class="container fade">
-                <h2>Web制作ポートフォリオ</h2>
-                <p>シンプルで見やすいサイト制作をしています</p>
+        <!-- メインビジュアル -->
+        <section class="hero">
+            <div class="hero-text">
+                <h1>福岡で個人事業主・店舗向けに<br>
+                    低コストで集客できるホームページを制作します</h1>
+                <p>✓ 初期費用のみ / 月額なし</p>    
+                <a href="#contact" class="btn">無料相談はこちら</a>
+                
+            </div>
+            <div class="hero-bg">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </section>
 
-        <!-- 作品 -->
-        <section id="works" class="works fade">
+        <!-- ニュース -->
+        <section id="news">
             <div class="container">
-                <h2>Works</h2>
+                <h2>NEWS</h2>
+                <ul class="news-list" id="news-list"></ul>
 
-                <div class="works-list">
-
-                    <div class="work-item fade">
-                        <a href="https://tommy-webdesign.github.io/cafe-site/">
-                            <img src="img/work1.png" alt="カフェサイト">
-                        </a>
-                        <h3>カフェサイト</h3>
-                        <p>レスポンシブ対応 / ホバーアニメーション実装</p>
-                    </div>
-
-                    <div class="work-item fade">
-                        <a href="https://tommy-webdesign.github.io/beauty-salon/">
-                            <img src="img/work2.png" alt="美容院サイト">
-                        </a>
-                        <h3>美容院サイト</h3>
-                        <p>デザインとレイアウトを意識して制作</p>
-                    </div>
-
-                    <div class="work-item fade">
-                        <a href="https://tommy-webdesign.github.io/company/">
-                            <img src="img/work3.png" alt="企業サイト">
-                        </a>
-                        <h3>企業サイト</h3>
-                        <p>中小企業向けに売上アップを意識したコーポレートサイトを制作。スライダーや問い合わせフォームを実装。</p>
-                    </div>
-
+                <div class="news-btn">
+                    <a href="news-list.html">一覧を見る →</a>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="about fade">
+        <!-- サービス -->
+        <section id="service">
             <div class="container">
-                <h2>About</h2>
+                <h2>SERVICE</h2>
+                <div class="service-list">
+                    <div class="service">
+                        <h3>Webサイト制作</h3>
+                        <p>見やすく伝わりやすい構成で、お問い合わせにつながるホームページを制作します。</p>
+                    </div>
+                    <div class="service">
+                        <h3>LP制作</h3>
+                        <p>サービスの魅力をしっかり伝え、行動につながるランディングページを制作します。</p>
+                    </div>
+                    <div class="service">
+                        <h3>保守・運用</h3>
+                        <p>公開後の更新や修正もサポートし、安心して運用できる環境を提供します。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 比較・特徴 -->
+        <section id="feature">
+            <div class="container">
+                <h2>FEATURES</h2>
+
+                <div class="feature-box">
+                    <div class="feature-item">
+                        <h3>料金の考え方</h3>
+                        <p>
+                            初期費用のみで制作し、月額費用はいただいておいません。<br>
+                            個人で制作を行っているため、無駄なコストを抑えた価格でご提供できます。
+                        </p>
+                    </div>
+
+                    <div class="feature-item">
+                        <h3>デザイン</h3>
+                        <p>
+                            目的やターゲットに合わせて一つずつ制作します。<br>
+                            見た目だけでなく初めて訪れた方でも迷わず理解できるサイトを制作します。
+                        </p>
+                    </div>
+
+                    <div class="feature-item">
+                        <h3>運用のしやすさ</h3>
+                        <p>
+                            公開後の修正や更新にも柔軟に対応可能です。<br>
+                            ご希望に応じて、ご自身で更新できる構成にも対応しています。
+                        </p>
+                    </div>
+
+                    <div class="feature-item">
+                        <h3>対応</h3>
+                        <p>
+                            制作から公開後まで一貫して対応します。<br>
+                            直接やり取りできるため、細かいご要望にもスムーズに対応できます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 実績 -->
+        <section id="works">
+            <div class="container">
+                <h2>WORKS</h2>
+                <div class="works-slider">
+                    <div class="works-track">
+                        <div class="work">
+                            <div class="work-item">
+                                <a href="https://tommy-webdesign.github.io/cafe-site/" target="_blank" rel="noopener">
+                                    <img src="img/work1.png" alt="カフェサイト">
+                                </a>
+                            </div>
+                            <h3>Cafeサイト</h3>
+                            <p>
+                                カフェの雰囲気が伝わるよう、写真を活かしたデザインと落ち着いた配色で制作しました。<br>
+                                メニューや店舗情報を分かりやすく整理し、初めての方でも利用しやすい構成にしています。<br>
+                                スマートフォン対応やアニメーションにより、快適に閲覧できるサイトに仕上げました。
+                            </p>
+
+                            <p>
+                                対応内容：デザイン / コーディング / レスポンシブ対応
+                            </p>
+                        </div>
+                        <div class="work">
+                            <div class="work-item">
+                                <a href="https://tommy-webdesign.github.io/beauty-salon/" target="_blank" rel="noopener">
+                                <img src="img/work2.png" alt="美容院サイト">
+                                </a>
+                            </div>
+                            <h3>美容院サイト</h3>
+                            <p>
+                                サロンの魅力が伝わるよう、高級感のある配色とシンプルなデザインで制作しました。<br>
+                                メニュー・スタイル・スタッフ情報を整理し、来店前の不安を減らす構成にしています。<br>
+                                スマートフォン対応や予約導線を意識し、行動につながりやすいサイトに仕上げました。
+                            </p>
+
+                            <p>
+                                対応内容：デザイン / コーディング / レスポンシブ対応
+                            </p>
+                        </div>
+                        <div class="work">
+                            <div class="work-item">
+                                <a href="https://tommy-webdesign.github.io/photo-site/" target="_blank" rel="noopener">
+                                <img src="img/work3.png" alt="フォトサイト">
+                                </a>
+                            </div>
+                            <h3>フォトサイト</h3>
+                            <p>
+                                写真の魅力を引き出すため、余白とシンプルなデザインを意識して制作しました。<br>
+                                スクロールに合わせたアニメーションやモーダル表示により、直感的に楽しめる構成にしています。<br>
+                                ビジュアルを活かしたサイト設計を意識し、ブランドや店舗サイトにも応用できるデザインです。
+                            </p>
+
+                            <p>
+                                対応内容：デザイン / コーディング / アニメーション実装
+                            </p>
+                        </div>
+
+                        <!-- 同じ繰り返し -->
+
+                        <div class="work">
+                            <div class="work-item">
+                                <a href="https://tommy-webdesign.github.io/cafe-site/" target="_blank" rel="noopener">
+                                    <img src="img/work1.png" alt="カフェサイト">
+                                </a>
+                            </div>
+                            <h3>Cafeサイト</h3>
+                            <p>
+                                カフェの雰囲気が伝わるよう、写真を活かしたデザインと落ち着いた配色で制作しました。<br>
+                                メニューや店舗情報を分かりやすく整理し、初めての方でも利用しやすい構成にしています。<br>
+                                スマートフォン対応やアニメーションにより、快適に閲覧できるサイトに仕上げました。
+                            </p>
+
+                            <p>
+                                対応内容：デザイン / コーディング / レスポンシブ対応
+                            </p>
+                        </div>
+                        <div class="work">
+                            <div class="work-item">
+                                <a href="https://tommy-webdesign.github.io/beauty-salon/" target="_blank" rel="noopener">
+                                <img src="img/work2.png" alt="美容院サイト">
+                                </a>
+                            </div>
+                            <h3>美容院サイト</h3>
+                            <p>
+                                サロンの魅力が伝わるよう、高級感のある配色とシンプルなデザインで制作しました。<br>
+                                メニュー・スタイル・スタッフ情報を整理し、来店前の不安を減らす構成にしています。<br>
+                                スマートフォン対応や予約導線を意識し、行動につながりやすいサイトに仕上げました。
+                            </p>
+
+                            <p>
+                                対応内容：デザイン / コーディング / レスポンシブ対応
+                            </p>
+                        </div>
+                        <div class="work">
+                            <div class="work-item">
+                                <a href="https://tommy-webdesign.github.io/photo-site/" target="_blank" rel="noopener">
+                                <img src="img/work3.png" alt="フォトサイト">
+                                </a>
+                            </div>
+                            <h3>フォトサイト</h3>
+                            <p>
+                                写真の魅力を引き出すため、余白とシンプルなデザインを意識して制作しました。<br>
+                                スクロールに合わせたアニメーションやモーダル表示により、直感的に楽しめる構成にしています。<br>
+                                ビジュアルを活かしたサイト設計を意識し、ブランドや店舗サイトにも応用できるデザインです。
+                            </p>
+
+                            <p>
+                                対応内容：デザイン / コーディング / アニメーション実装
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 会社情報 -->
+        <section id="about">
+            <div class="container">
+                <h2>ABOUT</h2>
+                <p>Tommy Web制作</p>
                 <p>
-                福岡を拠点にWeb制作を行っています。<br>
-                中小企業や個人事業主様向けに、シンプルで見やすく成果につながるサイトを制作しています。
+                個人事業主・店舗様向けのホームページ制作を行っています。<br>
+                「見やすく・伝わりやすい」デザインを大切にし、お問い合わせにつながるサイトをご提案します。<br>
+                初めての方でも安心してご相談いただけるよう、丁寧な対応を心がけています。<br>
+                ご相談から制作・公開後まで一貫して対応いたします。
                 </p>
             </div>
         </section>
 
+        <!-- 料金 -->
+        <section id="price">
+            <div class="container">
+                <h2>PRICE</h2>
+
+                <div class="price-box">
+
+                    <div class="price-item">
+                        
+                        <h3>ホームページ制作</h3>
+                        <p class="price">¥55,000～</p>
+                        <p>
+                            ・ページ数や構成に応じて柔軟に対応<br>
+                            ・スマホ対応<br>
+                            ・お問い合わせフォーム設置<br>
+                        </p>
+                    </div>
+
+                    <div class="price-item">
+                        <h3>LP制作</h3>
+                        <p class="price">¥33,000〜</p>
+                        <p>
+                            ・1ページ構成<br>
+                            ・集客・成約を意識した設計<br>
+                        </p>
+                    </div>
+
+                    <div class="price-item">
+                        <h3>更新・修正</h3>
+                        <p class="price">¥3,300〜 / 回</p>
+                        <p>
+                            ・テキスト修正<br>
+                            ・画像差し替え<br>
+                            ・軽微な更新対応<br>
+                            <br>
+                            必要なタイミングでご依頼いただけます。
+                        </p>
+                    </div>
+
+                </div>
+
+                <p class="price-note">
+                    ※表示価格はすべて税込です。
+                </p>
+            </div>
+        </section>
+
+        <!-- お問い合わせ -->
+        <section id="contact">
+            <div class="container">
+                <h2>CONTACT</h2>
+                <p>
+                ホームページ制作・リニューアルのご相談など、お気軽にお問い合わせください。<br>
+                内容を確認後、1〜2日以内にご返信いたします。
+                </p>
+                
+                <form action="https://formspree.io/f/mbdpprlz" method="POST">
+                    <input type="text" name="name" placeholder="お名前" required>
+                    <input type="email" name="email" placeholder="メールアドレス" required>
+                    <textarea name="message" placeholder="お問い合わせ内容"></textarea>
+                    <button type="submit" class="btn">送信する</button>
+                </form>
+            </div>
+        </section>
+
         <!-- フッター -->
-        <footer class="footer">
-            <p>© Tommy Portfolio</p>
+        <footer>
+            <div class="footer-inner">
+                <p>© 2026 Tommy Web制作</p>
+                <a href="https://instagram.com/tommywebdesign" class="sns">
+                    <img src="img/instagram.png">
+                </a>
+            </div>
         </footer>
 
-        <script>
-            const fades = document.querySelectorAll('.fade');
-
-            function checkFade(){
-                fades.forEach(fade => {
-                    const rect = fade.getBoundingClientRect();
-                    const windowHeight = window.innerHeight;
-
-                    if(rect.top < windowHeight - 100){
-                        fade.classList.add('show');
-                    }
-                });
-            }
-
-            window.addEventListener('scroll', checkFade);
-            window.addEventListener('DOMContentLoaded', checkFade);
-        </script>
-
     </body>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.querySelector('nav');
+
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        fetch('https://tommyweb.microcms.io/api/v1/news?limit=3&orders=-date', {
+            headers: {
+                'X-MICROCMS-API-KEY': 'qBJSTxKoWUFypyrfy0bUCRIA5mJvQBAVBfne'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            const newsList = document.getElementById('news-list');
+
+            data.contents.forEach(item => {
+                const li = document.createElement('li');
+                const formattedDate = new Date(item.date).toLocaleDateString('ja-JP');
+
+                const imageUrl = item.image?.url || 'img/noimage.png';
+
+                li.innerHTML = `
+                <a href="news.html?id=${item.id}" class="news-card">
+                    <img src="${imageUrl}" alt="">
+                    <div class="news-text">
+                        <span>${formattedDate}</span>
+                        <p>${item.title}</p>
+                    </div>
+                </a>
+                `;
+
+                newsList.appendChild(li);
+            });
+        });
+
+
+    </script>
+
 </html>
