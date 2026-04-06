@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEWS一覧</title>
+
+<style>
+    body{
+        margin:0;
+        font-family:sans-serif;
+        background:#f9f9f9;
+    }
+
+    .container{
+        width:90%;
+        margin:0 auto;
+        max-width:900px;
+    }
+
+    h1{
+        text-align:center;
+        margin:40px 0;
+    }
+
+    /* カード */
+    .news-list{
+        display:flex;
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .news-card{
+        display:flex;
+        gap:20px;
+        background:#fff;
+        padding:15px;
+        border-radius:10px;
+        text-decoration:none;
+        color:#333;
+        box-shadow:0 5px 15px rgba(0,0,0,0.1);
+        transition:0.3s;
+    }
+
+    .news-card:hover{
+        transform:translateY(-5px);
+        box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .news-card img{
+        width:150px;
+        height:100px;
+        object-fit:cover;
+        border-radius:8px;
+    }
+
+    .news-text span{
+        font-size:12px;
+        color:#888;
+    }
+
+    .news-text h2{
+        margin:5px 0 0;
+        font-size:18px;
+    }
+
+    /* 戻る */
+    .back{
+        display:block;
+        margin:40px auto;
+        text-align:center;
+        text-decoration:none;
+        color:#4facfe;
+        font-weight:bold;
+    }
+
+    /* ページネーション */
+    .pagination{
+        display:flex;
+        justify-content:center;
+        gap:10px;
+        margin:40px 0;
+    }
+
+    .pagination button{
+        padding:8px 12px;
+        border:none;
+        background:#eee;
+        cursor:pointer;
+        border-radius:5px;
+    }
+
+    .pagination button.active{
+        background:#4facfe;
+        color:#fff;
+    }
+
+    @media(max-width:768px){
+        .news-card{
+            flex-direction:column;
+        }
+
+        .news-card img{
+            width:100%;
+            height:200px;
+        }
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>NEWS一覧</h1>
+
+    <div class="news-list" id="news-list"></div>
+
+    <div class="pagination" id="pagination"></div>
+
+    <a href="index.html" class="back">← ホームに戻る</a>
+</div>
+
+<script>
+const API_KEY = 'qBJSTxKoWUFypyrfy0bUCRIA5mJvQBAVBfne';
+const LIMIT = 5; // 1ページ5件
+let currentPage = 1;
+
+function fetchNews(page){
+    const offset = (page - 1) * LIMIT;
+
+    fetch(`https://tommyweb.microcms.io/api/v1/news?limit=${LIMIT}&offset=${offset}&orders=-date`, {
+        headers: {
+            'X-MICROCMS-API-KEY': API_KEY
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+
+        const newsList = document.getElementById('news-list');
+        const pagination = document.getElementById('pagination');
+
+        newsList.innerHTML = "";
+        pagination.innerHTML = "";
+
+        // 記事表示
+        data.contents.forEach(item => {
+            const formattedDate = new Date(item.date).toLocaleDateString('ja-JP');
+            const imageUrl = item.image?.url || 'img/noimage.png';
+
+            const a = document.createElement('a');
+            a.href = `news.html?id=${item.id}`;
+            a.className = "news-card";
+
+            a.innerHTML = `
+                <img src="${imageUrl}">
+                <div class="news-text">
+                    <span>${formattedDate}</span>
+                    <h2>${item.title}</h2>
+                </div>
+            `;
+
+            newsList.appendChild(a);
+        });
+
+        // ページネーション
+        const totalPages = Math.ceil(data.totalCount / LIMIT);
+
+        for(let i=1; i<=totalPages; i++){
+            const btn = document.createElement('button');
+            btn.textContent = i;
+
+            if(i === page){
+                btn.classList.add('active');
+            }
+
+            btn.addEventListener('click', () => {
+                currentPage = i;
+                fetchNews(i);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            pagination.appendChild(btn);
+        }
+    });
+}
+
+// 初回読み込み
+fetchNews(currentPage);
+</script>
+
+</body>
+</html>
