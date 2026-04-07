@@ -4,9 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="img/favicon.png">
-        <title>Tommy Web制作 | 福岡のホームページ作成・個人事業主向けWeb制作</title>
-        <meta name="description" content="福岡を拠点に全国対応のホームページ制作を行うTommy Web制作。初期費用のみ・月額無料で集客できるサイトを制作します。ポートフォリオ・実績も掲載中。">
 
+
+        <title>福岡のホームページ作成 | 個人・低価格 | Tommy Web制作</title>
+        <meta name="description" content="福岡を拠点に全国対応のホームページ制作を行うTommy Web制作。初期費用のみ・月額無料で集客できるサイトを制作します。ポートフォリオ・実績も掲載中。">
 
         <style>
             html{
@@ -55,6 +56,17 @@
                 justify-content:space-between;
                 align-items:center;
                 padding:10px 0;
+                height:70px;
+            }
+
+            .logo img{
+                height:70px;
+                width:auto;
+                display:block;
+            }
+
+            .logo img:hover{
+                opacity:0.8;
             }
 
             nav{
@@ -316,6 +328,47 @@
                 white-space: pre-line;
             }
 
+            .problem{
+                background:#4facfe;
+                color:#fff;
+                text-align:center;
+                padding:80px 0;
+            }
+
+            .problem h2::after{
+                background:#fff;
+            }
+
+            .problem-list{
+                list-style:none;
+                padding:0;
+                max-width:600px;
+                margin:40px auto;
+                text-align:left;
+            }
+
+            .problem-list li{
+                font-size:18px;
+                margin-bottom:15px;
+                padding-left:35px;
+                position:relative;
+            }
+
+            /* チェックマーク */
+            .problem-list li::before{
+                content:"✔";
+                position:absolute;
+                left:0;
+                color:#fff;
+                font-weight:bold;
+            }
+
+            .problem-message{
+                font-size:20px;
+                font-weight:bold;
+                margin-top:30px;
+            }
+
             .service-list{
                 display:flex;
                 gap:20px;
@@ -511,7 +564,7 @@
                     display:none;
                     width:100px;
                     position:fixed;
-                    top:50px;
+                    top:70px;
                     right:0;
                     background:#fff;
                     z-index:100;
@@ -612,7 +665,11 @@
         <!-- ヘッダー -->
         <header>
             <div class="container header-inner">
-                <h1>Tommy Web制作</h1>
+                <h1 class="logo">
+                    <a href="#">
+                        <img src="img/logo.png" alt="Tommy Web制作">
+                    </a>
+                </h1>
                 <div class="hamburger" id="hamburger">
                     <span></span>
                     <span></span>
@@ -623,9 +680,7 @@
                         <li><a href="#">HOME</a></li>
                         <li><a href="#news">NEWS</a></li>
                         <li><a href="#service">SERVICE</a></li>
-                        <li><a href="#feature">FEATURE</a></li>
                         <li><a href="#works">WORKS</a></li>
-                        <li><a href="#about">ABOUT</a></li>
                         <li><a href="#price">PRICE</a></li>
                         <li><a href="#contact">CONTACT</a></li>
                     </ul>
@@ -636,9 +691,9 @@
         <!-- メインビジュアル -->
         <section class="hero">
             <div class="hero-text">
-                <h1>全国対応　個人事業主・店舗向けに<br>
-                    低コストで集客できるホームページを制作します</h1>
-                <p>✓ 初期費用のみ / 月額なし</p>    
+                <h1>福岡で個人事業主・店舗向けに<br>
+                    低コストで集客につながるホームページを制作します</h1>
+                <p>初期費用のみ / 月額無料 / 全国対応</p>    
                 <a href="#contact" class="btn">無料相談はこちら</a>
                 
             </div>
@@ -660,6 +715,26 @@
                 </div>
             </div>
         </section>
+
+        <section class="problem">
+    <div class="container">
+        <h2>こんなお悩みありませんか？</h2>
+
+        <ul class="problem-list">
+            <li>ホームページを作りたいけど費用が高い</li>
+            <li>作っても集客できるか不安</li>
+            <li>何を載せればいいか分からない</li>
+            <li>制作会社に頼むのはハードルが高い</li>
+        </ul>
+
+        <p class="problem-message">
+            そのお悩み、すべて解決できます。
+        </p>
+    </div>
+    <div style="margin-top:30px;">
+        <a href="#contact" class="btn">無料相談はこちら</a>
+    </div>
+</section>
 
         <!-- サービス -->
         <section id="service">
@@ -685,7 +760,6 @@
         <!-- 比較・特徴 -->
         <section id="feature">
             <div class="container">
-                <h2>FEATURES</h2>
 
                 <div class="feature-box">
                     <div class="feature-item">
